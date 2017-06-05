@@ -1,0 +1,3 @@
+spring.profiles: test
+server:
+  port: 8999
