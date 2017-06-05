@@ -1,2 +1,4 @@
+spring:
+  profiles: product
 server:
   port: 9092
