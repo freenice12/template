@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.template.batis.mapper")
 public class DemoApplication {
 
 	public static void main(String[] args) {
