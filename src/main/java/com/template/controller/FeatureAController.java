@@ -1,8 +1,6 @@
-package com.template.featureA;
+package com.template.controller;
 
-import com.template.batis.mapper.TestMapper;
-import com.template.featureA.service.TestService;
-import com.template.featureA.domain.TestEntity;
+import com.template.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +26,14 @@ public class FeatureAController {
         System.out.println("badExample");
         String name = testService.getName();
         System.out.println("Name: " + name);
+        return name;
+    }
+
+    @GetMapping(value = "/insert")
+    @ResponseBody
+    public String insert(@RequestParam(name = "name") String name, @RequestParam(name = "age") int age) {
+        System.out.println("insert");
+        System.out.println("inserted: " + testService.insert(name, age));
         return name;
     }
 

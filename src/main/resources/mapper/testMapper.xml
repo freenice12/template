@@ -7,6 +7,10 @@
         SELECT NAME FROM TEST WHERE ID=1
     </select>
 
+    <select id="getLastIndex" resultType="int">
+        SELECT MAX(ID) FROM TEST
+    </select>
+
     <select id="updateName">
         UPDATE TEST
         SET NAME = #{name}

@@ -1,4 +1,4 @@
-package com.template.featureA.domain;
+package com.template.domain;
 
 import javax.persistence.*;
 

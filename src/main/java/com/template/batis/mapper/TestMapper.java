@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Param;
 public interface TestMapper {
     String getName();
     void updateName(@Param("id")int id, @Param("name")String name);
+    int getLastIndex();
 }
