@@ -6,6 +6,7 @@ import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -20,6 +21,7 @@ import java.util.List;
  * Created by jylee on 2017-06-07.
  */
 @Configuration
+@EnableAspectJAutoProxy
 @EnableTransactionManagement(proxyTargetClass = true)
 public class TransactionConfig {
 
