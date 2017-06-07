@@ -45,5 +45,11 @@ public class FeatureAController {
         return name;
     }
 
+    @GetMapping(value = "/a.json")
+    @ResponseBody
+    public String returnJson() {
+        return "return: 404";
+    }
+
 }
 
