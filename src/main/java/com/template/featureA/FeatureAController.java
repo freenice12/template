@@ -1,6 +1,8 @@
 package com.template.featureA;
 
 import com.template.batis.mapper.TestMapper;
+import com.template.featureA.service.TestService;
+import com.template.featureA.domain.TestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +13,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class FeatureAController {
+
+    private final TestMapper testMapper;
+    private final TestService testService;
+
     @Autowired
-    private TestMapper testMapper;
+    public FeatureAController(TestMapper testMapper, TestService testService) {
+        this.testMapper = testMapper;
+        this.testService = testService;
+    }
 
     @GetMapping(value = "/test")
     @ResponseBody
@@ -23,4 +32,14 @@ public class FeatureAController {
         return name;
     }
 
+    @GetMapping(value = "/test2")
+    @ResponseBody
+    public String badExample2() {
+        System.out.println("start");
+        TestEntity testEntity = testService.getById(1);
+        System.out.println("Name2: " + testEntity.getName());
+        return testEntity.getName();
+    }
+
 }
+
