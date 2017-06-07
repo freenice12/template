@@ -6,6 +6,7 @@ import com.template.featureA.domain.TestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -14,31 +15,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class FeatureAController {
 
-    private final TestMapper testMapper;
     private final TestService testService;
 
     @Autowired
-    public FeatureAController(TestMapper testMapper, TestService testService) {
-        this.testMapper = testMapper;
+    public FeatureAController(TestService testService) {
         this.testService = testService;
     }
 
     @GetMapping(value = "/test")
     @ResponseBody
     public String badExample() {
-        System.out.println("start");
-        String name = testMapper.getName();
+        System.out.println("badExample");
+        String name = testService.getName();
         System.out.println("Name: " + name);
         return name;
     }
 
-    @GetMapping(value = "/test2")
+    @GetMapping(value = "/update")
     @ResponseBody
-    public String badExample2() {
-        System.out.println("start");
-        TestEntity testEntity = testService.getById(1);
-        System.out.println("Name2: " + testEntity.getName());
-        return testEntity.getName();
+    public String update(@RequestParam(name = "name") String name) {
+        System.out.println("update");
+        System.out.println("Name: " + testService.updateName(name));
+        return name;
     }
 
 }

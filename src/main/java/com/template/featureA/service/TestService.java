@@ -1,7 +1,7 @@
 package com.template.featureA.service;
 
-import com.template.featureA.domain.TestEntity;
-import com.template.featureA.domain.TestRepository;
+import com.template.batis.mapper.TestMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,17 +9,19 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TestService {
-    private final TestRepository testRepository;
+    private final TestMapper testMapper;
 
-    public TestService(TestRepository testRepository) {
-        this.testRepository = testRepository;
+    @Autowired
+    public TestService(TestMapper testMapper) {
+        this.testMapper = testMapper;
     }
 
-    public void insertSomething(TestEntity testEntity) {
-        testRepository.save(testEntity);
+    public String getName() {
+        return testMapper.getName();
     }
 
-    public TestEntity getById(int id) {
-        return testRepository.findOne(id);
+    public String updateName(String name) {
+        testMapper.updateName(1, name);
+        return getName();
     }
 }

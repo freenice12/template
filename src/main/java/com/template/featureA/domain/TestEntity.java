@@ -8,14 +8,28 @@ import javax.persistence.*;
 @Entity
 @Table(name = "TEST")
 public class TestEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private int id;
     @Column(name = "NAME")
     private String name;
     @Column(name = "AGE")
     private int age;
+
+    public TestEntity() {
+    }
+
+    public TestEntity(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public TestEntity(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
 
     public int getId() {
         return id;
